@@ -32,6 +32,6 @@ func main() {
 
 In your chat, you can perform the following actions:
 
-* `Will I ... ?` - Rolls [2d6](https://en.wikipedia.org/wiki/Dice_notation) and reports the results.
+* `Will I ... ?` - Asks the magic eightball a question.
   * Aliases: `Can I ... ?`, `Am I ... ?`
   * Parameters: `...` above is any question you might want to ask, such as `Will I get rich?` where `...` is replaced with `get rich`.
