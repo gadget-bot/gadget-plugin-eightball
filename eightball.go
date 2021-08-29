@@ -63,7 +63,7 @@ func askEightball() *router.MentionRoute {
 	return &pluginRoute
 }
 
-// This function is used to retrieve all Mention Routes from this plugin
+// GetMentionRoutes provides all mention routes from this plugin
 func GetMentionRoutes() []router.MentionRoute {
 	return []router.MentionRoute{
 		*askEightball(),
