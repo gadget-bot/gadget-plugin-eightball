@@ -47,10 +47,10 @@ func askEightball() *router.MentionRoute {
 	pluginRoute.Plugin = func(router router.Router, route router.Route, api slack.Client, ev slackevents.AppMentionEvent, message string) {
 		// Here's how we can react to the message
 		msgRef := slack.NewRefToMessage(ev.Channel, ev.TimeStamp)
-		api.AddReaction("8ball", msgRef)
+		_ = api.AddReaction("8ball", msgRef)
 
 		// Here's how we send a reply
-		api.PostMessage(
+		_, _, _ = api.PostMessage(
 			ev.Channel,
 			slack.MsgOptionText(
 				getEightballAnswer(),
