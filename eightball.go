@@ -44,13 +44,13 @@ func askEightball() *router.MentionRoute {
 	pluginRoute.Help = "Will|Can|Am I ... ?"
 	pluginRoute.Priority = -10
 	pluginRoute.Pattern = `(?i)^(will|can|am I) .+[?]?$`
-	pluginRoute.Plugin = func(router router.Router, route router.Route, api slack.Client, ev slackevents.AppMentionEvent, message string) {
+	pluginRoute.Plugin = func(ctx router.HandlerContext, ev slackevents.AppMentionEvent, message string) {
 		// Here's how we can react to the message
 		msgRef := slack.NewRefToMessage(ev.Channel, ev.TimeStamp)
-		_ = api.AddReaction("8ball", msgRef)
+		_ = ctx.BotClient.AddReaction("8ball", msgRef)
 
 		// Here's how we send a reply
-		_, _, _ = api.PostMessage(
+		_, _, _ = ctx.BotClient.PostMessage(
 			ev.Channel,
 			slack.MsgOptionText(
 				getEightballAnswer(),
